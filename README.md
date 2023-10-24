@@ -48,6 +48,7 @@
 | 6  | Peanut   | Hamster | 2021-08-01 | Roll, Spin           |
 | 7  | Bella    | Dog     | 2019-11-11 | Sit, Stay, Roll      |
 | 8  | Oliver   | Cat     | 2020-06-30 | Meow, Scratch, Jump  |
+
 Лист "PackAnimals"
 
 | ID | Name    | Type   | BirthDate  | Commands               |
