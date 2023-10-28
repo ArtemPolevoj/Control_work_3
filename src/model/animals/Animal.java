@@ -1,14 +1,17 @@
 package model.animals;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
-public  abstract class Animal {
+public abstract class Animal {
+    //region 10. Счетчик животных
+    private static int count = 0;
+    private final int id = ++count;
+    //endregion
     private final String name;
-    private Date birthDate;
-    private final ArrayList<String> commands = new ArrayList<>();
+    private String birthDate;
+    private final Collection<String> commands = new ArrayList<>();
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -20,13 +23,28 @@ public  abstract class Animal {
         return name;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
-    public void addCommands(String command){
-        commands.add(command);
+
+    public void addCommands(Collection<String> newCommands) {
+        commands.addAll(newCommands);
     }
-    public ArrayList<String> getCommands(){
+
+    public Collection<String> getCommands() {
         return commands;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        String[] temp = getClass().toString().split("\\.");
+        String srtClass = temp[temp.length - 1];
+        return "ID " + getId() + ", " + getName() + "(" + srtClass + ")" +
+                ", birthday - " + getBirthDate() +
+                ", commands - " + getCommands();
     }
 }
