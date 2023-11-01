@@ -1,5 +1,7 @@
 package controllers;
 
+import views.View;
+
 public interface Controller {
     void addNewPet();
 
@@ -12,5 +14,7 @@ public interface Controller {
     void getAll();
 
     void exit();
+
+    void setView(View view);
 
 }
