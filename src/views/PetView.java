@@ -15,45 +15,54 @@ public class PetView implements View {
     @Override
     public void run() {
         Scanner scanner = new Scanner(System.in);
-
         while (true) {
-            System.out.println("*** Реестр домашних питомцев ***");
-            System.out.println("================================");
-            System.out.println("0. ЗАВЕРШЕНИЕ РАБОТЫ ПРИЛОЖЕНИЯ.");
-            System.out.println("1. Добавить нового питомца.");
-            System.out.println("2. Получить список команд питомца.");
-            System.out.println("3. Обучить питомца новым командам.");
-            System.out.println("4. Получить список питомцев по дате рождения.");
-            System.out.println("5. Получить базу питомцев.");
-            System.out.print("Пожалуйста, выберите пункт меню: ");
+            println("*** Реестр домашних питомцев ***");
+            println("================================");
+            println("0. ЗАВЕРШЕНИЕ РАБОТЫ ПРИЛОЖЕНИЯ.");
+            println("1. Добавить нового питомца.");
+            println("2. Получить список команд питомца.");
+            println("3. Обучить питомца новым командам.");
+            println("4. Получить список питомцев по дате рождения.");
+            println("5. Получить базу питомцев.");
+            print("Пожалуйста, выберите пункт меню: ");
             try {
                 int number = scanner.nextInt();
                 switch (number) {
-                    case 0:
+                    case 0 -> {
+                        scanner.close();
                         controller.exit();
-                        break;
-                    case 1:
-                        controller.addNewPet();
-                        break;
-                    case 2:
-                        controller.getCommandsPet();
-                        break;
-                    case 3:
-                        controller.addNewCommand();
-                        break;
-                    case 4:
-                        controller.getPetsByBirthday();
-                        break;
-                    case 5:
-                        controller.getAll();
-                        break;
-                    default:
-                        System.out.println("Укажите корректный пункт меню.");
+                    }
+                    case 1 -> controller.addNewPet();
+                    case 2 -> controller.getCommandsPet();
+                    case 3 -> controller.addNewCommand();
+                    case 4 -> controller.getPetsByBirthday();
+                    case 5 -> controller.getAll();
+                    default -> println("Укажите корректный пункт меню.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Введено не корректное значение.");
+                println("Введено не корректное значение.");
                 run();
             }
         }
+    }
+
+    @Override
+    public void println(String string) {
+        System.out.println(string);
+    }
+
+    @Override
+    public void print(String string) {
+        System.out.print(string);
+    }
+
+    @Override
+    public String getString() {
+        return scanner.nextLine();
+    }
+
+    @Override
+    public void scannerClose() {
+        scanner.close();
     }
 }
